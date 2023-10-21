@@ -2,7 +2,7 @@
  "pres2023_169"
  (lambda ()
    (TeX-add-to-alist 'LaTeX-provided-package-options
-                     '(("textpos" "absolute" "overlay") ("beamerthemeboxes" "footheight=1em")))
+                     '(("textpos" "absolute" "overlay")))
    (TeX-run-style-hooks
     "graphicx"
     "beamerprosper"
@@ -18,8 +18,7 @@
     "float"
     "amssymb"
     "amsmath"
-    "euscript"
-    "beamerthemeboxes")
+    "euscript")
    (TeX-add-symbols
     '("beq" 1)
     '("eq" 1)
