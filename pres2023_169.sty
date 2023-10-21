@@ -16,6 +16,10 @@
 \usepackage{amsmath}
 \usepackage{euscript}
 
+
+\definecolor{links}{HTML}{900C3F}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+
 \tolerance=1000000
 \hyphenpenalty=5000
 
@@ -88,7 +92,7 @@
 
 %  \newcommand{\titleframe}[1]{\vspace{-0.15cm}\noindent\hspace{-0.5cm}{\color{white}\Large{#1}\strut}}
 \newcommand{\titleframe}[1]{\frametitle{#1}\vspace{-1cm}}
-\newcommand{\fig}[2]{\includegraphics[width=#1\textwidth]{#2}}
+\newcommand{\fig}[2]{\centering{\includegraphics[width=#1\textwidth]{#2}}}
 \newcommand{\figh}[2]{\includegraphics[height=#1]{#2}}
 
 \newcommand{\eq}[1]{$\color{eq}#1$}
