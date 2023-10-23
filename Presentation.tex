@@ -3,24 +3,62 @@
 \usepackage[utf8]{inputenc}
 \graphicspath{{figures/}}
  
-\author[JTCAM]{G. Anciaux}
+%\author[JTCAM]{G. Anciaux}
 %
-\title[JTCAM]{Why not \textit{Diamon Open Access} ?}
-
+%\title[JTCAM]{Why not \textit{Diamond Open Access} ?}
 \begin{document}
 
-\maketitle
+\begin{frame}[t]
+  \begin{center}
+  \vspace{1cm}
+  {\huge Why not \textit{Diamond Open Access} ?}\\
+  \vspace{.5cm}
+  {\Large Guillaume Anciaux}\\{LSMS, IIC, ENAC, EPFL}\\
+  \end{center}
+  \vspace{1cm}
+  \fig{.45}{OA_acc_to_phd_comics}
+\end{frame}
+
 
 %\usebackgroundtemplate{\includegraphics[width=12.8cm,height=9.6cm]{cover2.pdf}}{\begin{frame}[t,plain]\end{frame}}
 %\usebackgroundtemplate{\includegraphics[height=10cm]{bg.pdf}}
 
 %%%
 
+\begin{frame}[t]{Introduction}
+
+\end{frame}
+%%%
+
 \begin{frame}[t]{Outlook}
-\tableofcontents
+\begin{columns}[t]
+        \begin{column}{.5\textwidth}
+            \tableofcontents[sections={1-3}]
+        \end{column}
+        \begin{column}{.5\textwidth}
+            \tableofcontents[sections={4-6}]
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \section{History of (academic) press}
+\begin{frame}[t]{A small history of (Academic) Press...}
+
+  Taken from:\\
+
+  \begin{itemize}
+    \item 
+  \href{https://www.theguardian.com/science/2017/jun/27/profitable-business-scientific-publishing-bad-for-science}{S. Buranyi, Is the staggeringly profitable business of scientific publishing bad for science? The Guardian (2017)}.
+  \item
+    \href{https://doi.org/10.5281/zenodo.7212922}{Against Parasite Publishers: Making Journals Free (2022)}
+\end{itemize}
+    \vfill
+\pause
+  \begin{center}
+    That I \textbf{highly} recommend you to read...
+  \end{center}
+
+\end{frame}
 \subsection{Foundation}
 \begin{frame}[t]%
  \titleframe{History}\vskip1cm%
@@ -38,7 +76,8 @@
  \end{itemize}
 
  \vfill
-{\large Yet defined the purpose of scientific journals:\newline}
+ \pause
+{\large Defined the purpose of scientific journals:\newline}
 
 \begin{itemize}
 \item registration: authorship/priority claim
@@ -72,36 +111,35 @@
 
  %%%
 
-\subsection{Research Budgets after WWII}
+\subsection{Research Budgets}
 
-\begin{frame}[t]%
- \titleframe{History}\vskip1cm%
+\begin{frame}[t]{History}
 {
  \begin{center}
    \Large Post-World War II\\ Research budgets increase enormously
  \end{center}
 }
-\only<1>{
- \begin{quote}The average yearly growth of the US federal budget dedicated to non-defense R\&D between 1953 and 1973 is more than 15\% [12].
+ \begin{quote}The average yearly growth of the US federal budget dedicated to non-defense R\&D between 1953 and 1973 is more than 15\%
  \end{quote}
-}
+\end{frame}
 
-\only<2>{
+\begin{frame}[t]{US Budgets}
+\only<1>{
  \begin{center}
  \includegraphics[width=\textwidth]{Agencies.png}
 \end{center}
 }
-\only<3>{
+\only<2>{
  \begin{center}
  \includegraphics[width=\textwidth]{RDGDP.png}
 \end{center}
 }
-\only<4>{
- \begin{center}
- \includegraphics[width=\textwidth]{RDGDP-global.png}
-\end{center}
-}
- \end{frame}
+%\only<4>{
+% \begin{center}
+% \includegraphics[width=\textwidth]{RDGDP-global.png}
+%\end{center}
+%}
+\end{frame}
 
  %%%
 
@@ -152,33 +190,15 @@
 %%% 
 
 
-\begin{frame}[t]%
-  \titleframe{Publication metrics}\vskip1cm%
-
-
-  2013: \textbf{San Francisco Declaration on Research Assessment (DORA)}
-  \begin{quote}“Do not use journal-based metrics, such as Journal Impact Factors, as a surrogate measure of the quality of individual research articles, to assess an individual scientist’s contributions, or in hiring, promotion, or funding decisions.”\end{quote}
-   %The declaration is signed by more than 2400 organisations, including universities, funding agencies, and also publishers like Springer-Nature or Elsevier. [22]
-
-\end{frame}
-%%% 
-
-
 \subsection{Scientific Production so far}
-   \begin{frame}[t]%
- \titleframe{Number of papers produced}\vskip1cm%
+   \begin{frame}[t]{Number of papers produced}
 
  \begin{quote}
  In 2006, \textbf{50 million} papers have been published since scholarly articles first appeared.\newline Over three centuries, the annual number of published articles has grown exponentially at a \textbf{3\% rate}.
  \end{quote}
-\end{frame}
-
-%%%
-
-\subsection{}
-\begin{frame}[t]%
- \titleframe{Cost of a publication?}\vskip1cm%
-\fig{.6}{publisher-shares}
+\pause
+\fig{.5}{publisher-shares}
+\alert{\huge check the numbers and put the reference}
 \end{frame}
 
 %%%
@@ -267,8 +287,7 @@ Randy Schekman: “Despite my giving sermons all over the world on this topic, i
 %%%
 \section{Publication Costs}
 \subsection{Rigorous publication costs estimation}
-\begin{frame}[t]%
- \titleframe{Cost of a publication?}\vskip1cm%
+\begin{frame}[t]{Cost of a publication?}
 
 \href{https://doi.org/10.12688/f1000research.27468.2}{Grossmann, A. \& Brembs, B. Current market rates for scholarly publishing services. (2021)} 
 \begin{quote}
@@ -342,30 +361,37 @@ Randy Schekman: “Despite my giving sermons all over the world on this topic, i
 
 %%%
 
+\subsection{Publisher Revenues}
+\begin{frame}[t]{Publisher margins}
+ \fig{.5}{publishers-revenues}
+ \begin{quote}
+   Revenues in 2020 of the biggest publishers in \$
+
+   \href{https://doi.org/10.5281/zenodo.7212922}{Against Parasite Publishers: Making Journals Free (2022)}
+
+ \end{quote}
+\end{frame}
+
+%%%
 \subsection{Publisher Margins}
-\begin{frame}[t]%
- \titleframe{Cost of a publication?}\vskip1cm%
- \fig{.6}{publishers-revenues}
+\begin{frame}[t]{Publisher margins}
+ \fig{.55}{publisher-margins}
  \begin{quote}
-   Revenues in 2020 of the biggest publishers in \$ corresponding to the publishing segment only. MDPI figures are estimatations based on APC.
- \end{quote}
+
+   Declared Operating margins in 2020 in \%
+
+   \href{https://doi.org/10.5281/zenodo.7212922}{Against Parasite Publishers: Making Journals Free (2022)}
+
+
+\end{quote}
 \end{frame}
 
 %%%
 
-\begin{frame}[t]%
- \titleframe{Cost of a publication?}\vskip1cm%
- \fig{.6}{publisher-margins}
- \begin{quote}
-   \small
-Operating margins in 2020 in \%. The operating margin is the ratio of the operating income (or profit) with the revenue. Taylor \& Francis, Elsevier and Wiley publish an adjusted operating income which includes some technical corrections without changing the value substantially. Springer Nature does not publish its operating profit because its shares are not traded on the stockexchange.  
- \end{quote}
-\end{frame}
+\section{Diamond Open Access}
+\subsection{Definition}
 
-%%%
-
-\begin{frame}[t]%
- \titleframe{Diamond Open Access}\vskip1cm%
+\begin{frame}[t]{Diamond Open Access}
 
 Wikipedia Definition:\newline \newline
  \begin{quote}
@@ -408,6 +434,8 @@ Wikipedia Definition:\newline \newline
 
 %%%
 
+\subsection{DOA in Switzerland}
+
 \begin{frame}[t]%
  \titleframe{Diamond open in CH}\vskip1cm%
 
@@ -417,8 +445,9 @@ Wikipedia Definition:\newline \newline
 
 %%% 
 
-\begin{frame}[t]%
- \titleframe{Overlay Journals}\vskip1cm%
+\subsection{Overlay Journals}
+
+\begin{frame}[t]{Overlay Journals}
 
  \textbf{Definition}\newline\newline
  \begin{quote}
@@ -474,6 +503,8 @@ Wikipedia Definition:\newline \newline
 
 %%%
 
+\section{JTCAM example}
+\subsection{Community}
 
 \begin{frame}[t]{JTCAM: Research Community}
 \begin{itemize}
@@ -502,6 +533,7 @@ Wikipedia Definition:\newline \newline
 
 %%%
 
+\subsection{FAIR principles addressed}
 \begin{frame}[t]{JTCAM FAIR principles}
   \textbf{F}indable by Journal indexation
   \begin{itemize}
@@ -530,8 +562,8 @@ Wikipedia Definition:\newline \newline
  
 %%%
 
-\begin{frame}[t]%
- \titleframe{JTCAM: publication process}\vskip1cm%
+\subsection{Publication process}
+\begin{frame}[t]{JTCAM: publication process}
  \begin{center}%
    \only<1>{\fig{1}{epirevue_0d}}%
    \only<2>{\fig{1}{epirevue_1d}}%
@@ -544,50 +576,33 @@ Wikipedia Definition:\newline \newline
  
 %%%
 
-
+\subsection{Data Curation process}
 \begin{frame}[t]{Dataset Curation Management}
+  \begin{minipage}{.29\textwidth}
+    \textbf{Data curation tool}
+    \fig{.5}{solidipes}\\
+    {\tiny
+      \url{https://gitlab.com/dcsm/solidipes}}\newline\newline
+    \textbf{funded by\\}
+    \fig{.5}{ethr_en_rgb_black}
+\end{minipage}
+\hfill
+\begin{minipage}{.29\textwidth}
+  \fig{.5}{logo-renku}
+  \fig{.5}{logo-sdsc}
+\end{minipage}
 \end{frame}
 
 %%%
 
-\begin{frame}[t]{JTCAM: Challenges}
-  \begin{itemize}
-  \item 24 articles published
-    \begin{itemize}
-    \item Mostly from French community (90\%)
-    \item Difficult to become international
-    \end{itemize}
-  \item Strong influence of journal metrics
-    \begin{itemize}
-    \item Authors fear for impact (for their Ph.D students)
-    \item Reputation takes time to build
-    \item Imbalance between countries incentives (rich vs. poorer countries)
-    \end{itemize}
-  \item Copy-editing
-    \begin{itemize}
-    \item Low motivation on authors' side
-    \item Lots of work for technical editors (about 10h of work per paper)
-    \item Fairly long time between acceptation and publication 
-    \end{itemize}
-  \item Open Data/Open Software 
-    \begin{itemize}
-    \item Cultural limitations
-    \item Development of curation tool (ETH-ORD funding)
-    \end{itemize}
-
-  \end{itemize}
-\end{frame}
-
-%%%
-
-\begin{frame}[t]
- \titleframe{JTCAM: Motivation \& Chronology}\vskip1cm
+\subsection{Chronology}
+\begin{frame}[t]{JTCAM: Motivation \& Chronology}
 
  \begin{center}
    \Large
    \textbf{Time to offer an ethical and open publication model}
  \end{center}
-
+\vfill
 %\textbf{Historique}
  \begin{itemize}
   \item \parbox{1.5cm}{2015/09} First discussion between V. Acary \& M. Legrand\\[.5em]
@@ -605,6 +620,57 @@ Wikipedia Definition:\newline \newline
 
 
 %%%
+
+\subsection{Structural Challenges}
+
+\begin{frame}[t]{JTCAM: Challenges}
+  \begin{itemize}
+  \item 30 articles published (10 refused)
+    \begin{itemize}
+    \item Mostly from French community (90\%)
+    \item Difficult to become international
+    \end{itemize}
+  \item Copy-editing
+    \begin{itemize}
+    \item Low motivation on authors' side
+    \item Lots of work for technical editors (about 10h of work per paper)
+    \item Fairly long time between acceptation and publication 
+    \end{itemize}
+  \item Open Data/Open Software 
+    \begin{itemize}
+    \item Cultural limitations
+    \item Development of curation tool (ETH-ORD funding)
+    \end{itemize}
+
+  \end{itemize}
+\end{frame}
+
+%%%
+\subsection{Problematic of science metrics}
+\begin{frame}[t]{Community adhesion challenge}
+
+  \textbf{Lack of journal metrics is fearsome for JTCAM authors}
+  \begin{itemize}
+  \item Authors fear for impact (for their Ph.D students)
+  \item Reputation takes time to build
+  \item Imbalance between countries incentives (rich vs. poorer countries)
+  \end{itemize}
+
+  \vfill
+  
+  \textbf{San Francisco Declaration on Research Assessment (DORA, 2013)}
+  \begin{quote}Do not use journal-based metrics, such as Journal Impact Factors, as a surrogate measure of the quality of individual research articles, to assess an individual scientist’s contributions, or in hiring, promotion, or funding decisions.\end{quote}
+   %The declaration is signed by more than 2400 organisations, including universities, funding agencies, and also publishers like Springer-Nature or Elsevier. [22]
+
+\end{frame}
+%%%
+
+\section{Conclusion}
+\begin{frame}[t]{Conclusion}
+
+
+\end{frame}
+
 
 
 \end{document}
