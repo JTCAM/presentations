@@ -1,0 +1,8 @@
+auto
+*.aux
+*.log
+*.nav
+*.rubbercache
+*.snm
+*.toc
+*.out

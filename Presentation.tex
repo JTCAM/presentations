@@ -1,11 +1,12 @@
 \documentclass[10pt,compress,serif,aspectratio=169]{beamer}
-\usepackage{pres2023_169}
 \usepackage[utf8]{inputenc}
 \graphicspath{{figures/}}
- 
-%\author[JTCAM]{G. Anciaux}
-%
-%\title[JTCAM]{Why not \textit{Diamond Open Access} ?}
+
+\newcommand{\fig}[2]{\centering{\includegraphics[width=#1\textwidth]{#2}}}
+\newcommand{\figh}[2]{\includegraphics[height=#1]{#2}}
+
+%%%
+
 \begin{document}
 
 \begin{frame}[t]
@@ -23,9 +24,6 @@
   \end{center}
 \end{frame}
 
-
-%\usebackgroundtemplate{\includegraphics[width=12.8cm,height=9.6cm]{cover2.pdf}}{\begin{frame}[t,plain]\end{frame}}
-%\usebackgroundtemplate{\includegraphics[height=10cm]{bg.pdf}}
 
 %%%
 
@@ -102,8 +100,7 @@
   \end{center}
 \end{frame}
 \subsection{Foundation}
-\begin{frame}[t]%
- \titleframe{History}\vskip1cm%
+\begin{frame}[t]{History}
 
 {\large First scientific press:\newline}
  
@@ -132,8 +129,7 @@
  %%%
 \subsection{Authors rights}
 
-\begin{frame}[t]%
- \titleframe{Author and Copy rights}\vskip1cm%
+\begin{frame}[t]{Author and Copy rights}
 \begin{itemize}
 
  \item 1710: \textit{Statute of Anne}: British authors can control the copying of their books 
@@ -457,8 +453,7 @@ Wikipedia Definition:\newline \newline
 
 %%%
 
-\begin{frame}[t]%
- \titleframe{Diamond Open Access}\vskip1cm%
+\begin{frame}[t]{Diamond Open Access}
 
 Wikipedia Definition:\newline \newline
  \begin{quote}
@@ -480,8 +475,7 @@ Wikipedia Definition:\newline \newline
 
 \subsection{DOA in Switzerland}
 
-\begin{frame}[t]%
- \titleframe{Diamond open in CH}\vskip1cm%
+\begin{frame}[t]{Diamond open in CH}
 
 {\small
  \href{https://zenodo.org/doi/10.5281/zenodo.7461727}{Mapping the Swiss Landscape of Diamond Open Access Journals. The PLATO Study on Scholar-Led Publishing. Report}\\
