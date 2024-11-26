@@ -1,0 +1,23 @@
+digraph G
+{
+compound=true;
+node [shape=record];
+splines=false;
+ 
+subgraph cluster_0 {
+File [style = "bold"];
+Loaders [style = "bold", group="center", pos="0, 0"];
+Viewers [style = "bold"];
+File -> Loaders[label="read"];
+}
+
+subgraph cluster_1 {
+label = "Validators"; 
+Ontology [style = "bold"];
+Routines [style = "bold"];
+}
+
+Loaders -> Viewers[label="show"];
+Ontology -> Routines[dir="both"];
+Loaders -> Ontology[label="check", dir="both"];
+}
