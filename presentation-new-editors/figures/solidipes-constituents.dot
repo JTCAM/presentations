@@ -1,0 +1,31 @@
+digraph G
+{
+compound=true;
+node [shape=box];
+// splines=false;
+rankdir=LR;
+newrank=true;              // <-- important
+
+Scanner [style = "bold"];
+Loaders [style = "bold"];
+Viewer [style = "bold"];
+
+Scanner -> Loaders [label="read files"];
+Loaders -> Validations [label="metadata"];
+Validations -> Viewer [label="data"];
+
+subgraph cluster_validation {
+    rank=same;
+    ordering=out;
+    Validations [style = "bold", group="top"];
+    Data [style = "bold"];
+    Ontology[style = "bold"];
+
+Validations -> Data [dir="both", label="expects"];
+Validations -> Ontology [dir="both", label="matches"];
+
+}
+
+
+}
+

@@ -1,0 +1,13 @@
+digraph G
+{
+node [shape=record];
+1 -> 2[label="contains    "]
+1 -> 3[label="contains"]
+3 -> 4[label="contains"]
+2 -> 5[label="contains"]
+1 [label="Mesh"  style = "bold"];
+2 [label="Nodes" style = "bold"];
+3 [label="Elements" style = "bold"];
+4 [label="Connectivity\n (integer array)" style = "bold"];
+5 [label="Coordinates\n (real array)" style = "bold"];
+}
