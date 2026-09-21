@@ -273,258 +273,30 @@
 %\end{frame}
 %
 
-\input{tile.tex}
-
-%%%
-\usetikzlibrary{positioning,fit,arrows.meta, shapes.multipart}
-
-\begin{frame}{Plugins and Scientific Specializations}
-	\vfill
-	\begin{tikzpicture}[
-			node distance=1.4cm and 2cm,
-			box/.style={rectangle, draw, thick, minimum width=2cm, minimum height=0.8cm, align=center},
-			lbox/.style={box, rectangle split, rectangle split parts=2, rectangle split draw splits=true},
-			bold/.style={line width=1.5pt},
-			>=Stealth
-		]
-		% Main left-to-right nodes
-		\node[box, bold] (Scanner) {Scanner};
-		\node[box, bold, right=of Scanner] (Loaders) {Loaders};
-		\node[box, bold, right=of Loaders] (Validations) {Validations};
-		\node[box, bold, right=of Validations] (Report) {Report\\Viewers};
-		% Local top-to-bottom cluster
-		\node[lbox, below left=0.6cm and -1.5cm of Validations] (Data) {Data \nodepart{two}MIME $\leftrightarrow$ extension\\CSV headers};
-		\node[lbox, below right=0.6cm and -.5cm of Validations] (Ontology) {Ontology\\Metadata\nodepart{two}\\check units\\EXIF tags};
-		\node[box, below=0.6cm of Report] (Viewers) {Web\\Terminal};
-		\node[lbox, below=0.6cm of Scanner] (FileInfo) {FileInfo\nodepart{two}Local or Remote};
-		\node[lbox, below=0.6cm of Loaders] (Content) {Content\nodepart{two}Local or Remote};
-
-		% Cluster background
-		%\node[draw, dashed, rounded corners, fill=gray!10, fit=(Validations)(Data)(Ontology), inner sep=10pt] (cluster) {};
-		%\node[above=2pt of cluster.north, anchor=south, font=\bfseries] {Validation};
-		% Main edges
-		\draw[->] (Scanner) -- (Loaders) node[midway,above,font=\small] {read files};
-		\draw[->] (Loaders) -- (Validations) node[midway,above,font=\small] {metadata};
-		\draw[->] (Validations) -- (Report) node[midway,above,font=\small] {data};
-		% Internal cluster edges
-		\draw[->] (Scanner) -- (FileInfo) node[midway,left,font=\small] {fetch};
-		\draw[->] (Loaders) -- (Content) node[midway,left,font=\small] {fetches};
-		\draw[->] (Validations) -- (Data) node[midway,left,font=\small] {expects};
-		\draw[->] (Validations) -- (Ontology) node[midway,right,font=\small] {matches};
-		\draw[->] (Report) -- (Viewers) node[midway,right,font=\small] {uses};
-	\end{tikzpicture}
-	\pause
-	\vfill
-	\hrule
-	\vfill
-
-	\begin{columns}[T]
-		\column{0.33\textwidth}
-		\begin{block}{Template Plugin$\Rightarrow$ Adapt}
-			\begin{itemize}
-				\item Loaders
-				\item Viewers
-				\item Scanners
-				\item Validators
-				\item Ontologies (pydantic)
-				\item Reports
-			\end{itemize}
-		\end{block}
-		\pause
-		\column{0.32\textwidth}
-		\begin{block}{Solid Mechanics Plugin}
-
-			\begin{itemize}
-				\item Loaders: meshio, abaqus, paraview
-				\item Viewers: 3D Web-rendering of meshes
-				\item Ontology: check Displacement fields
-			\end{itemize}
-		\end{block}
-		\pause
-
-		\column{0.35\textwidth}
-		\begin{block}{Astro Plugin}
-			\begin{itemize}
-				\item Loaders: FITS
-				\item Viewers: AladinLite, AstrovisJS
-				\item Ontologies: TBD	MModa {\footnotesize\url{https://odahub.io/ontology/}}
-			\end{itemize}
-		\end{block}
-
-
-	\end{columns}
-
-\end{frame}
-
-%%%
-
-\section{Ontologies}
-\subsection{Ontology definition and description}
-
-%%%
-
-\begin{frame}[t]{Ontologies}
-
-	\textbf{Ontology (adapted from Wikipedia)}
-	\begin{quote}
-		an ontology encompasses \textbf{definitions} of the \textbf{categories}, \textbf{properties}, and \textbf{relations} between the \textbf{data entities} of a \textbf{(scientific) topic}.
-	\end{quote}
-	\pause
-	\vfill
-	\begin{minipage}{.4\textwidth}
-		In practice it is an \textbf{annotated graph} described with the \textit{Resource Description Framework}  (\href{https://www.techtarget.com/searchapparchitecture/definition/Resource-Description-Framework-RDF}{RDF})
-		or as a set of \textit{linked classes} (\href{https://pydantic.dev}{Pydantic})
-		\newline
-		\pause
-		\vfill
-		e.g. a {\huge \textbf{valid}} mesh file {\huge\textbf{must}} contain nodes and elements.
-	\end{minipage}
-	\begin{minipage}{.56\textwidth}
-		\vspace{-1cm}
-		\begin{center}
-			\fig{.6}{ontology-exemple}
-		\end{center}
-	\end{minipage}
-
-	\vfill
-	\pause
-	\begin{itemize}
-		\item \href{https://www.xdmf.org/index.php/XDMF_Model_and_Format}{XDMF} is a XML file (detected by linux) containing \textit{nodes and elements} tags
-		\item \textbf{.inp} is the \textbf{Abaqus} input file format, which may, or may not include meshing information
-		      \pause
-		\item Allows automatic validation/classification $\rightarrow$ Metadata based $\rightarrow$ {\huge \textbf{Fast}!}
-		      \pause
-		\item \textit{\textbf{Solidipes}} stores metadata with \href{https://rocrate.org}{ROCrate} and validates with \href{https://pydantic.dev}{Pydantic}
-	\end{itemize}
-	%	Ontology repository: \url{schema.org}
-	%	MModa Ontology: \url{https://odahub.io/ontology/}
-\end{frame}
-
-
-%%%
-
-\subsection{MMODA integration}
-\begin{frame}[t]{Reproducibility with workflows}
-	{Using workflow managers $\rightarrow$ binding to \textbf{DCSM+Solidipes}}
-
-	\fig{.8}{mmoda-solidipes-integration}
-	\centering
-	\vfill 	\href{https://staging.odahub.fr/mmoda/?src_name=Crab\&RA=83.63240000000002\&DEC=22.0174\&T1=2017-03-06T13\%3A26\%3A48.000\&T2=2017-03-06T15\%3A32\%3A27.000\&T_format=isot\&instrument=gaia\&query_type=Real\&product_type=Spectrum_from_photometry\&radius_photometry=10\&data_release=3\&query_status=ready}
-	{\Large \textit{Multi Messenger Online Data Analysis}(MMODA)\\ product Example}
-\end{frame}
-
-%%%
-
 \section{Conclusion}
 
 \begin{frame}[t]{Conclusion}{Open Science through Collaborative Data Curation}
 	\textbf{Motivation}
 	\begin{itemize}
 		\item FAIR data (Findable, Accessible, Interoperable, Reusable) requires active \textbf{curation}.
+		\item Foster good practices and networking through exchanges
 	\end{itemize}
 	\vfill
 	\pause
-	\textbf{Solidipes}, a \textbf{collaborative, plugin-based} curation tool for researchers.
+	JTCAM proceeds to dataset curation
 	\begin{itemize}
+		\item \textbf{After accepation} in parallel to copy-editing and open-review.
+		\item Using \textbf{Solidipes}, a \textbf{collaborative, plugin-based} curation tool for researchers.
 		\item \textbf{Curation}: \textit{scan $\rightarrow$ load $\rightarrow$ extract metadata $\rightarrow$ validate $\rightarrow$ report $\rightarrow$ publish} (Zenodo, ...)
-		\item \textbf{Remote storage} (Rclone, ...)
-		\item \textbf{Domain specializations} (plugins, solid mechanics, astrophysics).
-		\item \textbf{Ontologies} (Pydantic + RO-Crate) for validation and classification.
-	\end{itemize}
-	\vfill
-	\pause
-	\textbf{Next steps}
-	\begin{itemize}
-		\item \textbf{Workflows/containers} still work toward reproducibility (GUIX, Docker).
+		\item Minimum should be: raw data and script to reproduce figures.
 		\item \textbf{Reproducibility}: Author recommendations (\href{https://jtcam.github.io/authors-guidelines/authors_guidelines.html}{draft})
-		\item \textbf{Reproducibility}: Validations+Ontology $\Rightarrow$ Quality badges
 	\end{itemize}
-\end{frame}
-
-%%%
-
-\begin{frame}[c]{Solidipes Demo \& Tutorial}{Documentation: \href{https://solidipes.readthedocs.io/en/latest/}{https://solidipes.readthedocs.io}}
-	\vspace{1em}
-	\begin{columns}
-		\begin{column}{.5\textwidth}
-			Curated \textbf{@JTCAM}
-			\hrule
-			\vspace{.2cm}
-			\begin{enumerate}
-				\item \textbf{\href{https://doi.org/10.5281/zenodo.8256346}{Zenodo}}\\
-				      {\footnotesize E. Eid, R. Seghir, J. Réthoré. \\\textit{Accompanying data for the paper "Crack branching at low tip speeds: spilling the T"}}\\
-				      {\footnotesize \url{https://doi.org/10.5281/zenodo.8256346}}
-				\item \textbf{\href{https://renkulab.io/p/guillaume.anciaux/doi-org-10-5281-zenodo-8256346/sessions/01M1XNZTC960B5T680GXDW82M8/start}{@Renku}}\\ \textit{data-science platform for reproducible science \fig{.025}{swiss-flag}}
-			\end{enumerate}
-			\vfill
-			\vspace{.2cm}
-			\begin{center}
-				\qrcode[height=.3\textwidth]{https://renkulab.io/p/guillaume.anciaux/doi-org-10-5281-zenodo-8256346/sessions/01M1XNZTC960B5T680GXDW82M8/start}\\@renkulab.io
-			\end{center}
-			\vspace{.8cm}
-			\vfill
-		\end{column}
-		\begin{column}{.5\textwidth}
-			Curation Tutorial
-			\vspace{.1cm}
-			\hrule
-			\begin{enumerate}
-				\setlength{\itemsep}{1em}
-				\item \textbf{Installation} \\ \texttt{\small pip install solidipes}
-				\item \textbf{Downloading an existing dataset} \\ \small \href{https://sandbox.zenodo.org/records/13642}{https://sandbox.zenodo.org/records/13642}
-				\item \textbf{Reports} \\ \texttt{\small solidipes report curation/web}
-				\item \textbf{Tweak with plugins}
-			\end{enumerate}
-			\vspace{.2cm}
-
-			\begin{center}
-				\qrcode[height=.3\textwidth]{https://go.epfl.ch/solidipes-workshop}
-			\end{center}
-			\vspace{.4cm}
-
-			\vspace{.5cm}
-		\end{column}
-	\end{columns}
+	\pause
+	\vfill
+	\begin{center}
+		\Large{Any question, comment or suggestions ?}
+	\end{center}
 
 \end{frame}
 \end{document}
 
-% \begin{frame}[c]{Dataset curation: Ideal curation?}
-% 	\begin{itemize}
-% 		\item \textbf{Versatile} data storage
-% 		\item \textbf{Various} disciplines (experimental, theoretical, numerical, fluid mechanics, solid mechanics, ...)
-% 		\item Collaborative curation (\textbf{concurrent editing})
-% 		\item Robust descriptions (\textbf{ontologies, schemas})
-% 		\item Reproducibility (\textbf{workflows})
-% 	\end{itemize}
-% \end{frame}
-
-%%%
-
-%%%
-\section{Reproducibility}
-\subsection{workflow}
-\begin{frame}[t]{Reproducibility with workflows}
-	\only<1| handout:0>{\fig{.9}{simulation-flow-1.pdf}}
-	\only<2| handout:0>{\fig{.9}{simulation-flow-2.pdf}}
-	\only<3| handout:0>{\fig{.9}{simulation-flow-3.pdf}}
-	\only<4| handout:0>{\fig{.9}{simulation-flow.pdf}}
-	\only<5-| handout:1>{\vspace{-1cm}
-			\fig{.6}{simulation-flow-pkg.pdf}}
-	\only<6| handout:1>{
-			\begin{minipage}{.5\textwidth}
-				\begin{itemize}
-					\item \textbf{Docker} container: \href{https://renkulab.io/}{Renku}, \href{https://mybinder.org/}{Binder}, ...
-					\item \textbf{Workflow} management: \href{https://snakemake.github.io}{Snakemake}, \href{https://blackdynamite.readthedocs.io/en/latest/}{BlackDynamite}
-					\item \textbf{Packagers}: \href{https://www.researchobject.org/ro-crate/}{ROcrate}, \href{https://www.reprozip.org/}{reprozip}
-					\item \textbf{Repository}: \href{https://workflowhub.eu/}{WorkflowHub}
-				\end{itemize}
-			\end{minipage}
-			\begin{minipage}{.45\textwidth}
-				\textbf{Acquiring OS context \newline + ``automatic'' DockerFiles?}
-			\end{minipage}
-		}
-\end{frame}
-
-%%%
-\end{document}
